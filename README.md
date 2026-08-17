@@ -30,24 +30,13 @@ An isovist is an egocentric spatial descriptor that defines the volume of space 
 
 ## Dataset Preparation Pipeline
 
-To overcome the sensory noise, scanning limitations, and field constraints of real-world computer vision capture, this pipeline utilizes a simulated 3D environment to procedurally generate dense spatial datasets. Unreal Engine 5 serves as the virtual capture engine, simulating human-scale spatial exploration and transcribing sequential visual frames into structured 3D spatial representations.
+Synthetic spatial data is generated in **Unreal Engine 5** via a simulated first-person capture workflow:
 
-### 1. Synthetic Environment Setup
-- **Spatial Geometry:** Curated 3D architectural models representing diverse spatial typologies (enclosed, open, and corridor environments).
-- **Engine Configuration:** Assets are imported and structured within Unreal Engine 5 with collision meshes and standardized lighting conditions.
+1. **Trajectory Recording:** First-person roaming paths are defined across 3D architectural environments, logging continuous 6-DoF camera poses.
+2. **Multi-Pass Capture:** Synchronous RGB frames and scene depth buffers are exported alongside camera intrinsics.
+3. **Voxel Discretization:** 2.5D depth maps are back-projected into 3D metric point clouds and discretized into uniform voxel grids.
 
-### 2. Virtual Trajectory & Roaming
-- **Camera Pathing:** Camera trajectories are defined to simulate continuous, first-person human locomotion at eye-level.
-- **Data Synchronization:** Poses (position $[x, y, z]$ and orientation $[\text{pitch}, \text{yaw}, \text{roll}]$) are recorded frame-by-frame alongside timestamps.
-
-### 3. Multi-Pass Frame Capture
-- **RGB & Depth Extraction:** Using Unreal Engine's Scene Capture Component / Movie Render Queue, both high-resolution color frames and linear scene depth buffers are exported synchronously.
-- **Camera Intrinsics:** Fixed field of view (FOV) and focal length parameters are logged to ensure accurate back-projection.
-
-### 4. Spatial Discretization & Point Cloud Generation
-- **Back-Projection:** 2.5D depth maps are unprojected into Euclidean 3D coordinates using camera intrinsic and extrinsic matrices.
-- **Voxel / Grid Mapping:** The reconstructed point cloud is filtered, registered, and discretized into a uniform grid matrix (e.g., occupancy grids / voxelized isovist fields) for downstream generative modeling.
-
+---
 
 Path File Download From Here []
 
