@@ -19,7 +19,7 @@ utilizing voxel grids as a fundamental spatial syntax,Retrieval-Augmented Genera
 # From Isovist to Space
 
 <p align="center">
-  <img src="Medias/Gif/Isovist.gif" width="100%" />
+  <img src="Medias/Gif/Isovist.gif" width="50%" />
   <br>
   <em>Isovist Sample</em>
 </p>
